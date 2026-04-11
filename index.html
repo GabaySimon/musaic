@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musaic</title>
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo">Musaic</a>
+    <nav>
+      <a href="#" id="nav-builder">Builder</a>
+      <a href="#" id="nav-collection">Collection</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- BUILDER VIEW -->
+    <section id="builder-view">
+      <aside id="search-panel">
+        <input type="text" id="search-bar" placeholder="Search artists, songs, albums...">
+        <div id="results-container"></div>
+      </aside>
+
+      <div id="builder-main">
+        <h2 id="mosaic-title" contenteditable="true">Your Musaic</h2>
+        <div id="grid-size-options">
+          <label class="grid-size-btn">
+            <input type="radio" name="grid-size" value="4" checked>
+            4x4
+          </label>
+          <label class="grid-size-btn">
+            <input type="radio" name="grid-size" value="8">
+            8x8
+          </label>
+          <label class="grid-size-btn">
+            <input type="radio" name="grid-size" value="custom">
+            Custom
+          </label>
+          <div id="custom-grid-inputs">
+            <input type="number" id="grid-cols" min="1" max="20" placeholder="N">
+            <span>x</span>
+            <input type="number" id="grid-rows" min="1" max="20" placeholder="M">
+          </div>
+        </div>
+        <div id="mosaic-grid">
+
+        </div>
+        <div id="mosaic-actions">
+          <button id="fill-gaps">Fill Gaps</button>
+          <button id="randomize-covers">Randomize Order</button>
+          <button id="save-mosaic">Save Musaic</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- COLLECTION VIEW -->
+    <section id="collection-view">
+      <h2 id="collection-header">My collection</h2>
+      <div id="collection-grid">
+        <div id="new-mosaic">
+          <span class="icon">+</span>
+          <span>New Musaic</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
