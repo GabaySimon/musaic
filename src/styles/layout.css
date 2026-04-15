@@ -1,0 +1,215 @@
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    align-items: center;
+    justify-items: center;
+
+
+    padding: var(--spacing-vertical) 0;
+}
+
+
+/* --- "Musaic" top left logo --- */
+#logo {
+    color: var(--accent);
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    justify-self: start;
+
+    padding-left: var(--page-padding);
+}
+
+#logo:active {
+    transform: scale(0.99);
+}
+
+
+/* --- main top navigation --- */
+#main-nav {
+    display: flex;
+
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius);
+    padding: 4px;
+}
+
+#main-nav a {
+    color: var(--text-secondary);
+
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+#main-nav a:hover {
+    background-color: var(--bg-hover);
+}
+
+#main-nav a:active {
+    transform: scale(0.97);
+}
+
+
+
+/* ============================================
+   MAIN (where builder & collection views are rendered)
+   ============================================ */
+main {
+    flex: 1;
+
+    background-color: var(--bg-surface);
+
+    padding-top: var(--spacing-vertical);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#builder-view,
+#collection-view {
+    flex: 1;
+}
+
+
+
+/* ============================================
+   BUILDER VIEW
+   ============================================ */
+#builder-view {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+}
+
+
+/* --- builder-main --- */
+#builder-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- mosaic title --- */
+#mosaic-title {
+    padding-top: 5px;
+
+    outline: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition);
+}
+
+#mosaic-title:hover,
+#mosaic-title:focus {
+    border-bottom: 2px solid var(--accent);
+}
+
+
+/* --- mosaic grid --- */
+#mosaic-grid {
+    margin: var(--spacing-vertical) 0;
+
+    width: 500px;
+    height: 500px;
+
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius);
+}
+
+
+/* --- mosaic actions --- */
+#mosaic-actions {
+    display: flex;
+    gap: var(--gap);
+}
+
+.action-btn {
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.action-btn:active {
+    transform: scale(0.97);
+}
+
+#fill-gaps,
+#randomize-covers {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+#fill-gaps:hover,
+#randomize-covers:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-elevated);
+}
+
+#save-mosaic {
+    background-color: var(--bg-elevated);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+#save-mosaic:hover {
+    background-color: var(--accent-hover);
+}
+
+
+/* --- search panel --- */
+#search-panel {
+    justify-self: stretch;
+    padding-left: var(--page-padding);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+#search-bar {
+    outline: none;
+    border-radius: var(--radius);
+    padding: 10px;
+    width: 100%;
+}
+
+#results-container {
+    flex: 1;
+}
+
+
+
+/* ============================================
+   COLLECTION VIEW
+   ============================================ */
+#collection-view {
+    padding: 0 var(--page-padding) var(--page-padding);
+}
+
+#collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--thumbnail-size));
+    gap: var(--gap);
+
+    padding: var(--spacing-vertical) 0;
+}
+
+#new-mosaic-btn {
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+
+    height: var(--thumbnail-size);
+
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius);
+}
+
+#new-mosaic-btn span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}

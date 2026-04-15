@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font);
+
+    /* border: 1px solid red; */
+}
+
+button, input {
+  border: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+}
+
+.hidden {
+  display: none !important;
+}
+
+a {
+    text-decoration: none;
+}
