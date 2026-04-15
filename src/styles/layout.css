@@ -21,6 +21,9 @@ header {
     justify-self: start;
 
     padding-left: var(--page-padding);
+
+    user-select: none;
+    cursor: default;
 }
 
 #logo:active {
@@ -37,7 +40,7 @@ header {
     padding: 4px;
 }
 
-#main-nav a {
+#main-nav button {
     color: var(--text-secondary);
 
     padding: 8px 16px;
@@ -46,11 +49,11 @@ header {
     transition: background-color var(--transition), color var(--transition);
 }
 
-#main-nav a:hover {
+#main-nav button:hover {
     background-color: var(--bg-hover);
 }
 
-#main-nav a:active {
+#main-nav button:active {
     transform: scale(0.97);
 }
 
@@ -139,7 +142,6 @@ main {
 
 #fill-gaps,
 #randomize-covers {
-    background-color: transparent;
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
 }
@@ -151,7 +153,6 @@ main {
 }
 
 #save-mosaic {
-    background-color: var(--bg-elevated);
     color: var(--accent);
     border: 1px solid var(--accent);
 }

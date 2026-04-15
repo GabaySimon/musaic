@@ -13,16 +13,16 @@
 
 <body>
   <header>
-    <a href="#" id="logo">Musaic</a>
+    <span id="logo">Musaic</span>
     <nav id="main-nav">
-      <a href="#" id="nav-builder">Builder</a>
-      <a href="#" id="nav-collection">Collection</a>
+      <button id="nav-builder">Builder</button>
+      <button id="nav-collection">Collection</button>
     </nav>
   </header>
 
   <main>
     <!-- BUILDER VIEW -->
-    <section id="builder-view" class="hidden">
+    <section id="builder-view">
       <aside id="search-panel">
         <input type="search" id="search-bar" placeholder="Search artists, songs, albums...">
         <div id="results-container"></div>
@@ -42,7 +42,7 @@
 
 
     <!-- COLLECTION VIEW -->
-    <section id="collection-view">
+    <section id="collection-view" class="hidden">
       <h2 id="collection-header">My collection</h2>
       <div id="collection-grid">
         <button id="new-mosaic-btn">

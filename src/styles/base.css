@@ -12,6 +12,10 @@ button, input {
   border: none;
 }
 
+button {
+  background-color: transparent;
+}
+
 body {
     display: flex;
     flex-direction: column;
