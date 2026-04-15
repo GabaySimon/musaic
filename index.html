@@ -31,7 +31,22 @@
       <div id="builder-main">
         <h2 id="mosaic-title" contenteditable="true">Your Musaic</h2>
         <div id="grid-size-picker"></div>
-        <div id="mosaic-grid"></div>
+
+        <!-- TEMPLATE SLOTS - remove before production -->
+        <div id="mosaic-grid">
+          <!-- empty slot -->
+          <button class="mosaic-slot empty">
+            <span class="slot-icon">+</span>
+          </button>
+
+          <!-- filled slot -->
+          <div class="mosaic-slot filled">
+            <img
+              src="https://cdn-images.dzcdn.net/images/cover/ec3c8ed67427064c70f67e5815b74cef/250x250-000000-80-0-0.jpg"
+              alt="Album cover">
+          </div>
+        </div>
+
         <div id="mosaic-actions">
           <button class="action-btn" id="fill-gaps">Fill Gaps</button>
           <button class="action-btn" id="randomize-covers">Randomize Order</button>

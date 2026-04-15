@@ -113,13 +113,45 @@ main {
 
 /* --- mosaic grid --- */
 #mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
     margin: var(--spacing-vertical) 0;
 
     width: 500px;
-    height: 500px;
+    aspect-ratio: 1;
 
     background-color: var(--bg-elevated);
-    border-radius: var(--radius);
+}
+
+
+/* --- mosaic grid slots --- */
+.mosaic-slot {
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.mosaic-slot.empty {
+    color: var(--border-color);
+    font-size: 1.5rem;
+
+    display: grid;
+    place-items: center;
+
+    border: 2px dashed var(--border-color);
+    margin: 5px;
+}
+
+.mosaic-slot.empty:hover {
+  transform: scale(1.02);
+  transition: transform var(--transition);
+}
+
+.mosaic-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 
