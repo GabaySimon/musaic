@@ -1,5 +1,6 @@
 import { saveMosaic } from "../services/storage";
 import { renderCollection } from "./collections";
+import { switchToCollectionView } from "./navigation";
 
 export const initSave = () => {
     const saveMosaicBtn = document.getElementById('save-mosaic-btn');
@@ -29,5 +30,6 @@ export const initSave = () => {
 
         saveMosaic(mosaic);
         renderCollection();
+        switchToCollectionView();
     });
 }
