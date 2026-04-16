@@ -6,6 +6,8 @@ const searchBar = document.getElementById('search-bar');
 let debounceTimer;
 
 export const initSearch = () => {
+    searchBar.value = '';
+
     searchBar.addEventListener('input', async () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(async () => {

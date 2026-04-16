@@ -1,4 +1,5 @@
 import { saveMosaic } from "../services/storage";
+import { resetBuilder } from "./builder";
 import { renderCollection } from "./collections";
 import { switchToCollectionView } from "./navigation";
 
@@ -31,5 +32,6 @@ export const initSave = () => {
         saveMosaic(mosaic);
         renderCollection();
         switchToCollectionView();
+        resetBuilder();
     });
 }

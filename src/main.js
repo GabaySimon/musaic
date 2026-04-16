@@ -11,5 +11,3 @@ initMosaicGrid(4);
 initSearch();
 initSave();
 renderCollection();
-
-

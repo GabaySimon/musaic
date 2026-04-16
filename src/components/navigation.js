@@ -1,3 +1,5 @@
+import { resetBuilder } from "./builder";
+
 const builderView = document.getElementById('builder-view');
 const collectionView = document.getElementById('collection-view');
 
@@ -14,6 +16,7 @@ export const switchToCollectionView = () => {
 export const initNavigation = () => {
     const navBuilder = document.getElementById('nav-builder');
     const navCollection = document.getElementById('nav-collection');
+    const newMosaicBtn = document.getElementById('new-mosaic-btn');
 
     navBuilder.addEventListener('click', () => {
         switchToBuilderView();
@@ -22,4 +25,10 @@ export const initNavigation = () => {
     navCollection.addEventListener('click', () => {
         switchToCollectionView();
     });
+
+    newMosaicBtn.addEventListener('click', () => {
+        switchToBuilderView();
+        resetBuilder();
+    });
 }
+
