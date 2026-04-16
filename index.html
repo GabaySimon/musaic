@@ -24,8 +24,9 @@
     <!-- BUILDER VIEW -->
     <section id="builder-view">
       <aside id="search-panel">
-        <input type="search" id="search-bar" placeholder="Search artists, songs, albums...">
-        <div id="results-container"></div>
+        <input type="search" autocomplete="off" id="search-bar" placeholder="Search artists, songs, albums...">
+        <div id="results-container">
+        </div>
       </aside>
 
       <div id="builder-main">
@@ -38,8 +39,8 @@
           <input type="range" id="grid-size-slider" min="2" max="8" value="4" step="1">
         </div>
 
-        <!-- TEMPLATE SLOTS - remove before production -->
         <div id="mosaic-grid">
+          <!-- TEMPLATE - remove before production -->
           <!-- empty slot -->
           <button class="mosaic-slot empty">
             <span class="slot-icon">+</span>
