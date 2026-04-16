@@ -7,7 +7,7 @@
 
     /* accents */
     --accent: #e8650a;
-    --accent-hover: rgba(232, 101, 10, 0.15);
+    --accent-tint: rgba(232, 101, 10, 0.15);
     --border-color: #404040;
 
     /* text */

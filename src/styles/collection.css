@@ -1,0 +1,35 @@
+#collection-view {
+    padding: 0 var(--page-padding) var(--page-padding);
+}
+
+#collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--thumbnail-size));
+    gap: var(--gap);
+
+    padding: var(--spacing-vertical) 0;
+}
+
+#new-mosaic-btn {
+    background-color: var(--bg-elevated);
+    color: var(--text-secondary);
+
+    height: var(--thumbnail-size);
+
+    border: 2px dashed var(--border-color);
+}
+
+#new-mosaic-btn:hover {
+    transform: scale(1.02);
+    transition: transform var(--transition);
+}
+
+#new-mosaic-btn:active {
+    transform: scale(1);
+    transition: transform var(--transition);
+}
+
+#new-mosaic-btn span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}

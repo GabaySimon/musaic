@@ -7,6 +7,16 @@ export const initMosaicGrid = (size) => {
         slot.classList.add('mosaic-slot', 'empty');
         slot.innerHTML = '<span class="slot-icon">+</span>';
         mosaicGrid.appendChild(slot);
+
+        slot.addEventListener('dragover', (e) => {
+            e.preventDefault()
+        })
+
+        slot.addEventListener('drop', (e) => {
+            const imgUrl = e.dataTransfer.getData('coverUrl');
+            slot.classList.replace('empty', 'filled');
+            slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;
+        })
     }
 
     mosaicGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`

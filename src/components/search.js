@@ -31,6 +31,7 @@ function renderResults(tracks) {
 
         const card = document.createElement('div');
         card.classList.add('result-card');
+        card.draggable = true;
         card.innerHTML = `
             <img class="result-card-cover" src="${cover}" alt="${albumTitle}">
             <div class="result-card-info">
@@ -39,5 +40,19 @@ function renderResults(tracks) {
             </div>`;
 
         resultsContainer.appendChild(card);
+        
+        const dragImg = new Image();
+        dragImg.src = track.album.cover_xl;
+        dragImg.style.width = '100px';
+        dragImg.style.height = '100px';
+        dragImg.style.position = 'absolute';
+        dragImg.style.top = '-9999px';
+
+        card.addEventListener('dragstart', (e) => {
+            document.body.appendChild(dragImg);
+            e.dataTransfer.setDragImage(dragImg, 50, 50);
+            e.dataTransfer.setData('coverUrl', track.album.cover_xl);
+            setTimeout(() => document.body.removeChild(dragImg), 0);
+        });
     }
 }

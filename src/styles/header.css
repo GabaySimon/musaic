@@ -1,0 +1,55 @@
+header {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    align-items: center;
+    justify-items: center;
+
+
+    padding: var(--spacing-vertical) 0;
+}
+
+
+/* --- "Musaic" top left logo --- */
+#logo {
+    color: var(--accent);
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    justify-self: start;
+
+    padding-left: var(--page-padding);
+
+    user-select: none;
+    cursor: default;
+}
+
+#logo:active {
+    transform: scale(0.99);
+}
+
+
+/* --- main top navigation --- */
+#main-nav {
+    display: flex;
+
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius);
+    padding: 4px;
+}
+
+#main-nav button {
+    color: var(--text-secondary);
+
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+#main-nav button:hover {
+    background-color: var(--bg-hover);
+}
+
+#main-nav button:active {
+    transform: scale(0.97);
+}
