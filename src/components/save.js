@@ -1,4 +1,5 @@
 import { saveMosaic } from "../services/storage";
+import { renderCollection } from "./collections";
 
 export const initSave = () => {
     const saveMosaicBtn = document.getElementById('save-mosaic-btn');
@@ -10,7 +11,7 @@ export const initSave = () => {
         const mosaicSlots = document.querySelectorAll('.mosaic-slot');
         const tracks = []
 
-        for(let slot of mosaicSlots) {
+        for(const slot of mosaicSlots) {
             if(slot.classList.contains('empty')) {
                 tracks.push(null);
             } else {
@@ -27,5 +28,6 @@ export const initSave = () => {
         }
 
         saveMosaic(mosaic);
+        renderCollection();
     });
 }
