@@ -30,7 +30,13 @@
 
       <div id="builder-main">
         <h2 id="mosaic-title" contenteditable="true">Your Musaic</h2>
-        <div id="grid-size-picker"></div>
+        <div id="grid-size-picker">
+          <div id="grid-size-info">
+            <span id="grid-size-label">Grid size: </span>
+            <span id="grid-size-value">4</span>
+          </div>
+          <input type="range" id="grid-size-slider" min="2" max="12" value="4" step="1">
+        </div>
 
         <!-- TEMPLATE SLOTS - remove before production -->
         <div id="mosaic-grid">
