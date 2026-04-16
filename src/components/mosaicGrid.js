@@ -13,9 +13,11 @@ export const initMosaicGrid = (size) => {
         })
 
         slot.addEventListener('drop', (e) => {
-            const imgUrl = e.dataTransfer.getData('coverUrl');
+            const track = JSON.parse(e.dataTransfer.getData('track'));
+            const imgUrl = track.album.cover_xl;
             slot.classList.replace('empty', 'filled');
             slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;
+            slot.dataset.track = JSON.stringify(track);
         })
     }
 

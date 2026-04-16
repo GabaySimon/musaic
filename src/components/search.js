@@ -40,7 +40,7 @@ function renderResults(tracks) {
             </div>`;
 
         resultsContainer.appendChild(card);
-        
+
         const dragImg = new Image();
         dragImg.src = track.album.cover_xl;
         dragImg.style.width = '100px';
@@ -51,7 +51,7 @@ function renderResults(tracks) {
         card.addEventListener('dragstart', (e) => {
             document.body.appendChild(dragImg);
             e.dataTransfer.setDragImage(dragImg, 50, 50);
-            e.dataTransfer.setData('coverUrl', track.album.cover_xl);
+            e.dataTransfer.setData('track', JSON.stringify(track));
             setTimeout(() => document.body.removeChild(dragImg), 0);
         });
     }

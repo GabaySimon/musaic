@@ -161,26 +161,26 @@ input[type="range"]::-moz-range-thumb {
     transform: scale(0.97);
 }
 
-#fill-gaps,
-#randomize-covers {
+#fill-gaps-btn,
+#randomize-covers-btn {
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
 }
 
-#fill-gaps:hover,
-#randomize-covers:hover {
+#fill-gaps-btn:hover,
+#randomize-covers-btn:hover {
     color: var(--text-primary);
     background-color: var(--bg-elevated);
 }
 
-#save-mosaic {
+#save-mosaic-btn {
     color: var(--accent);
     border: 1px solid var(--accent);
 
     margin-left: auto;
 }
 
-#save-mosaic:hover {
+#save-mosaic-btn:hover {
     background-color: var(--accent-tint);
 }
 
