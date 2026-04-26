@@ -22,7 +22,7 @@ export const initMosaicGrid = (size) => {
             const incomingTrack = JSON.parse(e.dataTransfer.getData('track'));
 
             if (draggedSlot && draggedSlot !== slot) {
-                // save target's current track before overwritting
+                // save target's current track (only if slot is filled) before overwritting
                 const targetTrack = slot.dataset.track ? JSON.parse(slot.dataset.track) : null;
 
                 // fill target with incoming track
@@ -55,6 +55,13 @@ function fillSlot(slot, track) {
 
     slot.addEventListener('dblclick', () => {
         clearSlot(slot);
+    });
+
+    // remove cover if dropped outside of mosaic
+    slot.addEventListener('dragend', (e) => {
+        if (e.dataTransfer.dropEffect === 'none') {
+            clearSlot(slot);
+        }
     });
 }
 
