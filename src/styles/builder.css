@@ -109,10 +109,13 @@ input[type="range"]::-moz-range-thumb {
 
 /* --- mosaic grid slots --- */
 .mosaic-slot {
+    position: relative;
+
     aspect-ratio: 1;
     overflow: hidden;
 }
 
+/* --- empty --- */
 .mosaic-slot.empty {
     color: var(--text-secondary);
     font-size: 1.5rem;
@@ -134,11 +137,44 @@ input[type="range"]::-moz-range-thumb {
     transition: transform var(--transition);
 }
 
+
+/* --- filled --- */
 .mosaic-slot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.slot-play-btn {
+    display: grid;
+    place-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    transition: opacity var(--transition);
+
+    background: transparent;
+    cursor: pointer;
+
+    width: 38px;
+    height: 38px;
+
+    background-color: rgba(245, 245, 245, 0.85);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.slot-play-btn img.play-icon {
+    padding-left: 4px;
+}
+
+.mosaic-slot.filled:hover .slot-play-btn {
+    opacity: 1;
 }
 
 

@@ -1,4 +1,5 @@
 import { getGenres, getGenreTracks } from "../api/deezer";
+import { fillSlot } from "./mosaicGrid";
 import { showToast } from "./toast";
 
 export const initFillGaps = () => {
@@ -73,10 +74,7 @@ export const initFillGaps = () => {
                 const randomIndex = Math.floor(Math.random() * filteredTracks.length);
                 const randomTrack = filteredTracks[randomIndex];
                 filteredTracks.splice(randomIndex, 1);
-                const imgUrl = randomTrack.album.cover_xl;
-                slot.classList.replace('empty', 'filled');
-                slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;
-                slot.dataset.track = JSON.stringify(randomTrack);
+                fillSlot(slot, randomTrack);
             }
         })
     })

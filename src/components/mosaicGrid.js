@@ -1,6 +1,9 @@
+import { createPlayBtn, setPauseIcon, currentAudio, currentPlayBtn, setCurrentPlayBtn } from "./player";
+
+let draggedSlot = null;
+
 export const initMosaicGrid = (size) => {
     const mosaicGrid = document.getElementById('mosaic-grid');
-    let draggedSlot = null;
 
     mosaicGrid.innerHTML = '';
     for (let i = 0; i < size * size; i++) {
@@ -28,6 +31,11 @@ export const initMosaicGrid = (size) => {
                 // fill target with incoming track
                 fillSlot(slot, incomingTrack);
 
+                if (currentPlayBtn && draggedSlot.contains(currentPlayBtn)) {
+                    setCurrentPlayBtn(slot.querySelector('.slot-play-btn'));
+                    setPauseIcon(currentPlayBtn);
+                }
+
                 // put target's old track back into source (=swap) or clear source if target was empty
                 if (targetTrack) {
                     fillSlot(draggedSlot, targetTrack);
@@ -46,7 +54,7 @@ export const initMosaicGrid = (size) => {
     mosaicGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
 }
 
-function fillSlot(slot, track) {
+export const fillSlot = (slot, track) => {
     const imgUrl = track.album.cover_xl;
     slot.classList.replace('empty', 'filled');
     slot.draggable = true;
@@ -63,6 +71,8 @@ function fillSlot(slot, track) {
             clearSlot(slot);
         }
     });
+
+    createPlayBtn(slot);
 }
 
 function clearSlot(slot) {
