@@ -1,9 +1,16 @@
 import { getGenres, getGenreTracks } from "../api/deezer";
+import { showToast } from "./toast";
 
 export const initFillGaps = () => {
     const fillGapsBtn = document.getElementById('fill-gaps-btn');
 
     fillGapsBtn.addEventListener('click', async () => {
+        const emptySlots = [...document.querySelectorAll('.mosaic-slot.empty')];
+        if (emptySlots.length === 0) {
+            showToast("No empty slots to fill");
+            return;
+        }
+        
         const genresOverlay = document.createElement('div');
         genresOverlay.id = 'genres-overlay';
         document.body.appendChild(genresOverlay);
@@ -42,14 +49,22 @@ export const initFillGaps = () => {
         genresModal.appendChild(fillBtn);
 
         fillBtn.addEventListener('click', async () => {
-            genresOverlay.remove();
             const selectedGenreIds = [...genresModal.querySelectorAll('.genre-btn.selected')].map(btn => btn.dataset.id);
-            const emptySlots = [...document.querySelectorAll('.mosaic-slot.empty')];
+            if(selectedGenreIds.length === 0) {
+                showToast("Choose at least 1 genre", 'error');
+                return;
+            }
+
+            genresOverlay.remove();
+
+            const tracksByGenre = await Promise.all(
+                selectedGenreIds.map(id => getGenreTracks(id))
+            );
+
+            const allTracks = tracksByGenre.flat();
 
             for(let slot of emptySlots) {
-                const randomGenreId = selectedGenreIds[Math.floor(Math.random() * selectedGenreIds.length)];
-                const tracks = await getGenreTracks(randomGenreId);
-                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+                const randomTrack = allTracks[Math.floor(Math.random() * allTracks.length)];
                 const imgUrl = randomTrack.album.cover_xl;
                 slot.classList.replace('empty', 'filled');
                 slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;
