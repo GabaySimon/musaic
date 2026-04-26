@@ -280,3 +280,80 @@ input[type="range"]::-moz-range-thumb {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+
+/* ============================================
+   GENRES MODAL
+   ============================================ */
+#genres-overlay {
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#genres-modal {
+    position: relative;
+
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius);
+    padding: var(--gap);
+    width: 600px;
+    height: 300px;
+
+    display: flex;
+    align-content: flex-start;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.genre-btn {
+    background-color: var(--bg-elevated);
+    color: var(--text-secondary);
+
+    height: 35px;
+
+    padding: 6px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.genre-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.genre-btn.selected {
+    background-color: var(--accent);
+    color: #000;
+}
+
+#fill-btn {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+
+    margin-left: auto;
+
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+#fill-btn:hover {
+    background-color: var(--accent-tint);
+}

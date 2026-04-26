@@ -38,7 +38,7 @@ export const renderCollection = () => {
         mosaicDeleteBtn.dataset.id = mosaic.id;
         mosaicCardBack.appendChild(mosaicDeleteBtn);
 
-        mosaicDeleteBtn.addEventListener('click', (e) => {
+        mosaicDeleteBtn.addEventListener('click', () => {
             deleteMosaic(mosaic.id);
             renderCollection();
         })
