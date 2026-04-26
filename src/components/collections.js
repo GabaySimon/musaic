@@ -26,6 +26,7 @@ export const renderCollection = () => {
         const mosaicCardThumbnail = document.createElement('div');
         mosaicCardThumbnail.classList.add('mosaic-card-thumbnail');
         mosaicCardThumbnail.style.gridTemplateColumns = `repeat(${mosaic.gridSize}, 1fr)`;
+        mosaicCardThumbnail.style.gridTemplateRows = `repeat(${mosaic.gridSize}, 1fr)`;
         mosaicCardFront.appendChild(mosaicCardThumbnail);
 
         const mosaicCardName = document.createElement('span');
