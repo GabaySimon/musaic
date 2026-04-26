@@ -10,7 +10,7 @@ export const initFillGaps = () => {
             showToast("No empty slots to fill");
             return;
         }
-        
+
         const genresOverlay = document.createElement('div');
         genresOverlay.id = 'genres-overlay';
         document.body.appendChild(genresOverlay);
@@ -30,7 +30,7 @@ export const initFillGaps = () => {
         const genres = await getGenres();
         const filteredGenres = genres.filter(genre => genre.id !== 0);
 
-        for(let genre of filteredGenres) {
+        for (let genre of filteredGenres) {
             const genreBtn = document.createElement('button');
             genreBtn.classList.add('genre-btn');
             genreBtn.dataset.id = genre.id;
@@ -50,7 +50,7 @@ export const initFillGaps = () => {
 
         fillBtn.addEventListener('click', async () => {
             const selectedGenreIds = [...genresModal.querySelectorAll('.genre-btn.selected')].map(btn => btn.dataset.id);
-            if(selectedGenreIds.length === 0) {
+            if (selectedGenreIds.length === 0) {
                 showToast("Choose at least 1 genre", 'error');
                 return;
             }
@@ -63,8 +63,16 @@ export const initFillGaps = () => {
 
             const allTracks = tracksByGenre.flat();
 
-            for(let slot of emptySlots) {
-                const randomTrack = allTracks[Math.floor(Math.random() * allTracks.length)];
+            // remove tracks that have same album cover
+            const filteredTracks = allTracks.filter((track, index, self) =>
+                index === self.findIndex(t => t.album.cover_xl === track.album.cover_xl)
+            );
+
+            for (let slot of emptySlots) {
+                if (filteredTracks.length === 0) break;
+                const randomIndex = Math.floor(Math.random() * filteredTracks.length);
+                const randomTrack = filteredTracks[randomIndex];
+                filteredTracks.splice(randomIndex, 1);
                 const imgUrl = randomTrack.album.cover_xl;
                 slot.classList.replace('empty', 'filled');
                 slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;
