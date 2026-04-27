@@ -1,8 +1,10 @@
-import { createPlayBtn, setPauseIcon, currentAudio, currentPlayBtn, setCurrentPlayBtn } from "./player";
+import { createPlayBtn, setPauseIcon, currentAudio, currentPlayBtn, setCurrentPlayBtn, stopPlayer } from "./player";
 
 let draggedSlot = null;
 
 export const initMosaicGrid = (size) => {
+    stopPlayer();
+
     const mosaicGrid = document.getElementById('mosaic-grid');
 
     mosaicGrid.innerHTML = '';
@@ -25,23 +27,7 @@ export const initMosaicGrid = (size) => {
             const incomingTrack = JSON.parse(e.dataTransfer.getData('track'));
 
             if (draggedSlot && draggedSlot !== slot) {
-                // save target's current track (only if slot is filled) before overwritting
-                const targetTrack = slot.dataset.track ? JSON.parse(slot.dataset.track) : null;
-
-                // fill target with incoming track
-                fillSlot(slot, incomingTrack);
-
-                if (currentPlayBtn && draggedSlot.contains(currentPlayBtn)) {
-                    setCurrentPlayBtn(slot.querySelector('.slot-play-btn'));
-                    setPauseIcon(currentPlayBtn);
-                }
-
-                // put target's old track back into source (=swap) or clear source if target was empty
-                if (targetTrack) {
-                    fillSlot(draggedSlot, targetTrack);
-                } else {
-                    clearSlot(draggedSlot);
-                }
+                swapSlots(draggedSlot, slot);
             } else {
                 // dropping from search results onto any slot
                 fillSlot(slot, incomingTrack);
@@ -75,7 +61,21 @@ export const fillSlot = (slot, track) => {
     createPlayBtn(slot);
 }
 
+function swapSlots(slotA, slotB) {
+    const parent = slotA.parentNode;
+    const placeholder = document.createComment('placeholder');
+
+    parent.insertBefore(placeholder, slotA);
+    parent.insertBefore(slotA, slotB);
+    parent.insertBefore(slotB, placeholder);
+    parent.removeChild(placeholder);
+}
+
 function clearSlot(slot) {
+    if (currentPlayBtn && slot.contains(currentPlayBtn)) {
+        stopPlayer();
+    }
+
     slot.classList.replace('filled', 'empty');
     slot.innerHTML = '<span class="slot-icon">+</span>';
     slot.draggable = false;

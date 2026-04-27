@@ -1,0 +1,121 @@
+#mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin: var(--spacing-vertical) 0;
+
+    width: var(--mosaic-grid-size);
+    aspect-ratio: 1;
+
+    background-color: var(--bg-elevated);
+}
+
+
+/* --- mosaic grid slots --- */
+.mosaic-slot {
+    position: relative;
+
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+/* --- empty --- */
+.mosaic-slot.empty {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+
+    display: grid;
+    place-items: center;
+
+    border: 2px dashed var(--border-color);
+    margin: 5px;
+}
+
+.mosaic-slot.empty:hover {
+    transform: scale(1.02);
+    transition: transform var(--transition);
+}
+
+.mosaic-slot.empty:active {
+    transform: scale(1);
+    transition: transform var(--transition);
+}
+
+
+/* --- filled --- */
+.mosaic-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slot-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.slot-play-btn {
+    position: absolute;
+    background: transparent;
+    cursor: pointer;
+
+    z-index: 1;
+
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    background-color: rgba(245, 245, 245, 0.85);
+    border-radius: 50%;
+}
+
+.slot-play-btn img {
+    width: 22px;
+    height: 22px;
+}
+
+.slot-play-btn img.play-icon {
+    padding-left: 4px;
+}
+
+.mosaic-slot.filled:hover .slot-player {
+    opacity: 1;
+}
+
+.svg-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 4;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-dasharray: 114;
+    stroke-dashoffset: 114;
+}
