@@ -1,4 +1,4 @@
-import { createPlayBtn, setPauseIcon, currentAudio, currentPlayBtn, setCurrentPlayBtn, stopPlayer } from "./player";
+import { createPlayBtn, currentPlayBtn, stopPlayer } from "./player";
 
 let draggedSlot = null;
 

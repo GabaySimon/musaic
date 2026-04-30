@@ -145,3 +145,25 @@
     text-overflow: ellipsis;
     width: var(--thumbnail-size);
 }
+
+
+/* --- export button --- */
+.export-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.export-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.export-btn:active {
+    transform: scale(0.98);
+}

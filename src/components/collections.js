@@ -1,4 +1,5 @@
 import { deleteMosaic, getMosaics } from "../services/storage"
+import { exportMosaic } from "./export";
 
 export const renderCollection = () => {
     const collectionGrid = document.getElementById('collection-grid');
@@ -48,6 +49,12 @@ export const renderCollection = () => {
         deleteIcon.src = '/delete-icon.svg';
         deleteIcon.alt = 'delete'
         mosaicDeleteBtn.appendChild(deleteIcon);
+
+        const exportBtn = document.createElement('button');
+        exportBtn.classList.add('export-btn');
+        exportBtn.textContent = 'Export';
+        exportBtn.addEventListener('click', () => exportMosaic(mosaic));
+        mosaicCardBack.appendChild(exportBtn);
 
         for (const track of mosaic.tracks) {
             if (!track) {
