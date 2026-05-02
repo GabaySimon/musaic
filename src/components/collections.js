@@ -65,7 +65,7 @@ export const renderCollection = () => {
             const cover = document.createElement('img');
             cover.classList.add('thumbnail-cover');
             cover.dataset.track = track
-            cover.src = track.album.cover_medium;
+            cover.src = track.coverThumbnail;
             cover.alt = 'Album cover';
 
             mosaicCardThumbnail.appendChild(cover);

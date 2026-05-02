@@ -13,7 +13,7 @@ export const exportMosaic = async (mosaic) => {
         return new Promise((resolve) => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
-            img.src = track.album.cover_xl;
+            img.src = track.coverUrl;
             img.onload = () => {
                 const col = i % mosaic.gridSize;
                 const row = Math.floor(i / mosaic.gridSize);

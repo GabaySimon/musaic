@@ -16,7 +16,7 @@ export const initSearch = () => {
                 return;
             }
             const tracks = await searchTracks(searchBar.value);
-            const validTracks = tracks.filter(track => track.album.cover_medium);
+            const validTracks = tracks.filter(track => track.coverThumbnail);
             renderResults(validTracks);
         }, 150);
     });
@@ -26,10 +26,10 @@ function renderResults(tracks) {
     resultsContainer.innerHTML = '';
 
     for (const track of tracks) {
-        const cover = track.album.cover_medium;
-        const artistName = track.artist.name;
+        const cover = track.coverThumbnail;
+        const artistName = track.artist;
         const songTitle = track.title;
-        const albumTitle = track.album.title;
+        const albumTitle = track.albumTitle;
 
         const card = document.createElement('div');
         card.classList.add('result-card');
@@ -44,7 +44,7 @@ function renderResults(tracks) {
         resultsContainer.appendChild(card);
 
         const dragImg = new Image();
-        dragImg.src = track.album.cover_xl;
+        dragImg.src = track.coverUrl;
         dragImg.style.width = '100px';
         dragImg.style.height = '100px';
         dragImg.style.position = 'absolute';

@@ -41,7 +41,7 @@ export const initMosaicGrid = (size) => {
 }
 
 export const fillSlot = (slot, track) => {
-    const imgUrl = track.album.cover_xl;
+    const imgUrl = track.coverUrl;
     slot.classList.replace('empty', 'filled');
     slot.draggable = true;
     slot.innerHTML = `<img src="${imgUrl}" alt="Album cover">`;

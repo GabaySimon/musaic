@@ -66,7 +66,7 @@ export const initFillGaps = () => {
 
             // remove tracks that have same album cover
             const filteredTracks = allTracks.filter((track, index, self) =>
-                index === self.findIndex(t => t.album.cover_xl === track.album.cover_xl)
+                index === self.findIndex(t => t.coverUrl === track.coverUrl)
             );
 
             for (let slot of emptySlots) {

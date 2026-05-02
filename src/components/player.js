@@ -85,7 +85,7 @@ function playTrack(track, playBtn) {
         const oldRing = currentPlayBtn?.closest('.slot-player')?.querySelector('.ring-progress');
         if (oldRing) oldRing.style.strokeDashoffset = 114;
 
-        currentAudio = new Audio(track.preview);
+        currentAudio = new Audio(track.previewUrl);
         const ringProgress = playBtn.closest('.slot-player').querySelector('.ring-progress');
         currentAudio.play();
         setPauseIcon(playBtn);
