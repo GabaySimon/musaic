@@ -18,6 +18,12 @@ export const getGenreTracks = async (genreId) => {
   return data.data.map(mapTrack);
 }
 
+export const getTrackPreview = async (trackId) => {
+    const response = await fetch(`${BASE_URL}/track/${trackId}`);
+    const data = await response.json();
+    return data.preview;
+};
+
 function mapTrack(track) {
   return {
     id: track.id,

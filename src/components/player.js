@@ -92,6 +92,10 @@ function playTrack(track, playBtn) {
         currentPlayBtn = playBtn;
 
         currentInterval = setInterval(() => {
+            if (!currentAudio) {
+                clearInterval(currentInterval);
+                return;
+            }
             const progress = currentAudio.currentTime / currentAudio.duration;
             ringProgress.style.strokeDashoffset = 114 - (114 * progress);
         })

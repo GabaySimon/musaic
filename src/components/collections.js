@@ -1,5 +1,7 @@
 import { deleteMosaic, getMosaics } from "../services/storage"
+import { loadMosaic } from "./builder";
 import { exportMosaic } from "./export";
+import { switchToBuilderView } from "./navigation";
 
 export const renderCollection = () => {
     const collectionGrid = document.getElementById('collection-grid');
@@ -51,10 +53,19 @@ export const renderCollection = () => {
         mosaicDeleteBtn.appendChild(deleteIcon);
 
         const exportBtn = document.createElement('button');
-        exportBtn.classList.add('export-btn');
+        exportBtn.classList.add('export-btn', 'card-action-btn');
         exportBtn.textContent = 'Export';
         exportBtn.addEventListener('click', () => exportMosaic(mosaic));
         mosaicCardBack.appendChild(exportBtn);
+
+        const editBtn = document.createElement('button');
+        editBtn.classList.add('edit-btn', 'card-action-btn');
+        editBtn.textContent = 'edit';
+        editBtn.addEventListener('click', () => {
+            loadMosaic(mosaic);
+            switchToBuilderView();
+        })
+        mosaicCardBack.appendChild(editBtn);
 
         for (const track of mosaic.tracks) {
             if (!track) {

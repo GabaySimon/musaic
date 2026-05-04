@@ -146,24 +146,36 @@
     width: var(--thumbnail-size);
 }
 
-
-/* --- export button --- */
-.export-btn {
+/* --- card action buttons --- */
+.card-action-btn {
+    width: 80%;
     padding: 6px 14px;
     border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: background-color var(--transition), color var(--transition);
+    transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.card-action-btn:active {
+    transform: scale(0.98);
+}
+
+.export-btn {
+    border: 1px solid var(--accent);
+    color: var(--accent);
 }
 
 .export-btn:hover {
-    background-color: var(--bg-hover);
-    color: var(--text-primary);
+    background-color: var(--accent-tint);
 }
 
-.export-btn:active {
-    transform: scale(0.98);
+.edit-btn {
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.edit-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
 }

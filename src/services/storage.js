@@ -6,7 +6,12 @@ export const getMosaics = () => {
 
 export const saveMosaic = (mosaic) => {
     const mosaics = getMosaics();
-    mosaics.push(mosaic);
+    const existing = mosaics.findIndex(m => m.id === mosaic.id);
+    if (existing >= 0) {
+        mosaics[existing] = mosaic;
+    } else {
+        mosaics.push(mosaic);
+    }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(mosaics));
 }
 

@@ -1,12 +1,16 @@
-import { initMosaicGrid } from "./mosaicGrid";
+import { fillSlot, initMosaicGrid } from "./mosaicGrid";
+import { getTrackPreview } from "../api/deezer";
+
+export let currentMosaic = null;
 
 export const resetBuilder = () => {
-  document.getElementById('mosaic-title').textContent = 'Your Musaic';
-  document.getElementById('grid-size-slider').value = 4;
-  document.getElementById('grid-size-value').textContent = 4;
-  document.getElementById('search-bar').value = '';
-  document.getElementById('results-container').innerHTML = '';
-  initMosaicGrid(4);
+    currentMosaic = null;
+    document.getElementById('mosaic-title').textContent = 'Your Musaic';
+    document.getElementById('grid-size-slider').value = 4;
+    document.getElementById('grid-size-value').textContent = 4;
+    document.getElementById('search-bar').value = '';
+    document.getElementById('results-container').innerHTML = '';
+    initMosaicGrid(4);
 };
 
 export const buildMosaic = () => {
@@ -25,10 +29,35 @@ export const buildMosaic = () => {
     }
 
     return {
-        id: `mosaic_${Date.now()}`,
+        ...(currentMosaic || {
+            id: `mosaic_${Date.now()}`,
+            createdAt: new Date().toISOString().split('T')[0]
+        }),
         name: mosaicTitle.textContent,
-        createdAt: new Date().toISOString().split('T')[0],
         gridSize: parseInt(gridSizeValue.textContent),
         tracks: tracks
     }
+}
+
+export const loadMosaic = async (mosaic) => {
+    currentMosaic = mosaic;
+    document.getElementById('mosaic-title').textContent = mosaic.name;
+    document.getElementById('grid-size-slider').value = mosaic.gridSize;
+    document.getElementById('grid-size-value').textContent = mosaic.gridSize;
+
+    initMosaicGrid(mosaic.gridSize);
+    const mosaicSlots = document.querySelectorAll('.mosaic-slot');
+    const tracks = mosaic.tracks;
+
+    const tracksWithFreshPreviews = await Promise.all(
+        mosaic.tracks.map(async (track) => {
+            if (!track) return null;
+            const freshPreview = await getTrackPreview(track.id);
+            return { ...track, previewUrl: freshPreview };
+        })
+    );
+
+    tracksWithFreshPreviews.forEach((track, i) => {
+        if (track) fillSlot(mosaicSlots[i], track);
+    });
 }
