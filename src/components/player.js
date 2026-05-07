@@ -1,3 +1,5 @@
+import { showToast } from "./toast";
+
 export let currentAudio = null;
 export let currentPlayBtn = null;
 export let currentInterval = null;
@@ -35,6 +37,10 @@ export const createPlayBtn = (slot) => {
     playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const track = JSON.parse(slot.dataset.track);
+        if(!track.previewUrl) {
+            showToast("Preview loading, try again in a moment", 'info');
+            return;
+        }
         playTrack(track, playBtn);
     });
 }

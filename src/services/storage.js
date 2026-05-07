@@ -12,6 +12,7 @@ export const saveMosaic = (mosaic) => {
     } else {
         mosaics.push(mosaic);
     }
+    
     localStorage.setItem(STORAGE_KEY, JSON.stringify(mosaics));
 }
 
