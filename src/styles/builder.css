@@ -29,6 +29,12 @@
     border-bottom: 2px solid var(--accent);
 }
 
+#mosaic-title:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
 
 /* --- grid size picker --- */
 #grid-size-picker {
@@ -113,13 +119,15 @@ input[type="range"]::-moz-range-thumb {
 }
 
 #fill-gaps-btn,
-#randomize-covers-btn {
+#randomize-covers-btn,
+#export-mosaic-btn {
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
 }
 
 #fill-gaps-btn:hover,
-#randomize-covers-btn:hover {
+#randomize-covers-btn:hover,
+#export-mosaic-btn:hover {
     color: var(--text-primary);
     background-color: var(--bg-elevated);
 }
@@ -133,4 +141,9 @@ input[type="range"]::-moz-range-thumb {
 
 #save-mosaic-btn:hover {
     background-color: var(--accent-tint);
+}
+
+#mosaic-title:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-secondary);
 }

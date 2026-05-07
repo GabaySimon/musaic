@@ -5,12 +5,26 @@ export let currentMosaic = null;
 
 export const resetBuilder = () => {
     currentMosaic = null;
-    document.getElementById('mosaic-title').textContent = 'Your Musaic';
+    document.getElementById('mosaic-title').textContent = '';
     document.getElementById('grid-size-slider').value = 4;
     document.getElementById('grid-size-value').textContent = 4;
     document.getElementById('search-bar').value = '';
     document.getElementById('results-container').innerHTML = '';
     initMosaicGrid(4);
+};
+
+export const initMosaicTitle = () => {
+    const mosaicTitle = document.getElementById('mosaic-title');
+
+    mosaicTitle.addEventListener('input', () => {
+        if (mosaicTitle.innerHTML === '<br>' || mosaicTitle.innerHTML === '') {
+            mosaicTitle.innerHTML = '';
+        }
+    });
+
+    mosaicTitle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') e.preventDefault();
+    });
 };
 
 export const buildMosaic = () => {

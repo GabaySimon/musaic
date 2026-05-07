@@ -6,6 +6,8 @@ import { initSave } from "./components/save";
 import { initFillGaps } from "./components/fillGaps";
 import { renderCollection } from "./components/collections";
 import { initRandomizeCovers } from "./components/randomizeCovers";
+import { initBuilderExport } from "./components/export";
+import { initMosaicTitle } from "./components/builder";
 
 initNavigation();
 initGridSizePicker();
@@ -15,4 +17,5 @@ initSave();
 initFillGaps();
 initRandomizeCovers();
 renderCollection();
-
+initBuilderExport();
+initMosaicTitle();
