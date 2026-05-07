@@ -35,13 +35,26 @@ function renderResults(tracks) {
         card.classList.add('result-card');
         card.draggable = true;
         card.innerHTML = `
-            <img class="result-card-cover" src="${cover}" alt="${albumTitle}">
+            <img class="result-card-cover" data-src="${cover}" alt="${albumTitle}">
             <div class="result-card-info">
                 <span class="result-card-title">${songTitle}</span>
                 <span class="result-card-artist">${artistName}</span>
             </div>`;
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    obvserver.unobserve(img);
+                }
+            });
+        }, { root: resultsContainer });
+
         resultsContainer.appendChild(card);
+
+        const img = card.querySelector('.result-card-cover');
+        observer.observe(img);
 
         const dragImg = new Image();
         dragImg.src = track.coverUrl;

@@ -8,6 +8,10 @@
     /* border: 1px solid red; */
 }
 
+.result-card-cover:not([src]) {
+    background-color: red;
+}
+
 button, input {
   border: none;
 }
