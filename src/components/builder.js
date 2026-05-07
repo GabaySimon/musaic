@@ -63,6 +63,10 @@ export const loadMosaic = async (mosaic) => {
     const mosaicSlots = document.querySelectorAll('.mosaic-slot');
     const tracks = mosaic.tracks;
 
+    mosaic.tracks.forEach((track, i) => {
+        if(track) fillSlot(mosaicSlots[i], track);
+    });
+
     const tracksWithFreshPreviews = await Promise.all(
         mosaic.tracks.map(async (track) => {
             if (!track) return null;
@@ -72,6 +76,6 @@ export const loadMosaic = async (mosaic) => {
     );
 
     tracksWithFreshPreviews.forEach((track, i) => {
-        if (track) fillSlot(mosaicSlots[i], track);
+        if(track) mosaicSlots[i].dataset.track = JSON.stringify(track);
     });
 }
