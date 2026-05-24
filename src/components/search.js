@@ -46,7 +46,7 @@ function renderResults(tracks) {
                 if(entry.isIntersecting) {
                     const img = entry.target;
                     img.src = img.dataset.src;
-                    obvserver.unobserve(img);
+                    observer.unobserve(img);
                 }
             });
         }, { root: resultsContainer });

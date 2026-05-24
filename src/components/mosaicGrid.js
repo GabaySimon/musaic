@@ -1,4 +1,5 @@
 import { createPlayBtn, currentPlayBtn, stopPlayer } from "./player";
+import { showToast } from "./toast";
 
 let draggedSlot = null;
 
@@ -13,6 +14,12 @@ export const initMosaicGrid = (size) => {
         slot.classList.add('mosaic-slot', 'empty');
         slot.innerHTML = '<span class="slot-icon">+</span>';
         mosaicGrid.appendChild(slot);
+
+        slot.addEventListener('click', () => {
+            if (slot.classList.contains('empty')) {
+                showToast("Search for a song and drag it here", 'info');
+            }
+        });
 
         slot.addEventListener('dragover', (e) => {
             e.preventDefault()

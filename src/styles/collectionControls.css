@@ -1,0 +1,85 @@
+#collection-controls {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: var(--gap) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+#sort-controls label,
+#completion-filters > label:first-child,
+#grid-size-filters > label:first-child {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+#completion-filters > label:first-child,
+#grid-size-filters > label:first-child {
+    margin-right: 4px;
+}
+
+/* select dropdown */
+#sort-select {
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+/* filter & sort pills */
+.filter-pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background-color: var(--bg-elevated);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    user-select: none;
+}
+
+.filter-pill input {
+    display: none;
+}
+
+.filter-pill:has(input:checked) {
+    background-color: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+}
+
+#completion-filters,
+#grid-size-filters {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
