@@ -2,7 +2,7 @@ Musaic is an interactive web application that lets you build visual mosaics from
 
 
 ## Features
-Musaic is built around a simple but powerful workflow:
+Musaic is built around a simple workflow:
 - Search for songs and artists using the Deezer API and browse results in the sidebar
 - Drag & drop album covers into a customizable grid (from 2×2 up to 8×8)
 - Rearrange covers by dragging them between slots
@@ -353,8 +353,11 @@ The project follows a clear separation of concerns:
 
 ### Exported mosaic examples
 ![Exported mosaic](screenshots/Maravilloso.png)
+
 ![Exported mosaic](screenshots/TE_QUIERO.png)
+
 ![Exported mosaic](screenshots/Faiyaz.png)
+
 ![Exported mosaic](screenshots/Jazzmine.png)
 
 
@@ -373,6 +376,6 @@ All code was written and understood, with Claude acting as a senior developer & 
 
 ## Sources
 - [Deezer API documentation](https://developers.deezer.com/api)
-- [MDN Web Docs](https://developer.mozilla.org) — JavaScript, CSS and Web API references
+- [MDN Web Docs](https://developer.mozilla.org) --> JavaScript, CSS and Web API references
 - [Vite documentation](https://vitejs.dev/config/)
 - [CSS Tricks — A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
